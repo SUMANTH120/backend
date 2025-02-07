@@ -30,12 +30,13 @@ const doctorSchema = new mongoose.Schema({
   image: String
 }, { collection: "doctors" });
 
-const Doctor = mongoose.model("Doctor", doctorSchema);
+const Doctor = mongoose.model("doctors", doctorSchema);
 
 // API Route: Get Doctors by Specialty
 app.get("/api/doctors", async (req, res) => {
   try {
     const specialty = req.query.specialty;
+    console.log(req.query)
     if (!specialty) {
       return res.status(400).json({ message: "Specialty is required" });
     }
