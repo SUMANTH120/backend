@@ -16,8 +16,8 @@ mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
-.then(() => console.log("Connected to MongoDB"))
-.catch((err) => console.error("MongoDB Connection Error:", err));
+.then(() => console.log("✅ Connected to MongoDB"))
+.catch((err) => console.error("❌ MongoDB Connection Error:", err));
 
 // Doctor Schema & Model
 const doctorSchema = new mongoose.Schema({
@@ -28,7 +28,7 @@ const doctorSchema = new mongoose.Schema({
   experience: Number,
   patientsConsulted: Number,
   image: String
-});
+}, { collection: "doctors" });
 
 const Doctor = mongoose.model("Doctor", doctorSchema);
 
@@ -50,5 +50,5 @@ app.get("/api/doctors", async (req, res) => {
 
 // Start Server
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`🚀 Server running on port ${PORT}`);
 });
